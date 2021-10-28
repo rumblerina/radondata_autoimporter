@@ -2,7 +2,7 @@ from openpyxl import Workbook, load_workbook
 from dbfread import DBF
 
 wb = Workbook()
-table = DBF("C:\\Radon98\\Data\\DBRADON.DBF", load = True, ignore_missing_memofile=True)
+table = DBF("DBRADON.DBF", load = True, ignore_missing_memofile=True)
 length = len(table)
 ws1 = wb.create_sheet("RFD", 0)
 ws2 = wb.create_sheet("RAC")
@@ -147,9 +147,4 @@ for i in range(length):
         ws2['L' + str(c)].value = table.records[i]["MEASURE"]      
 print("Importation of RAC SK13 data complete")
 
-#for i in range(length):
-    #if table.records[i]['TYPE'] == 30:
-        #print(table.records[i]['A214BI']) #This gets the 12th record out of 0-12 range in A214BI column of the dbf file
-        #ws1['A2'].value = 5
-
-wb.save("D:\\Users\\User\\Desktop\\radon stuff\\radon autodata.xlsx")
+wb.save("radon autodata.xlsx")
